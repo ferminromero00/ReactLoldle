@@ -1,11 +1,13 @@
 import React from 'react';
 
-export default function ListaCampeones({ campeones, onSelect, filterText }) {
-    // Filtrar campeones basados en el texto de búsqueda
+export default function ListaCampeones({ campeones, onSelect, filterText, respuestasUsadas = [] }) {
+    // Filtrar campeones basados en el texto de búsqueda y respuestas usadas
     const campeonesFiltered = campeones ?
-        Object.values(campeones).filter(campeon =>
-            campeon.name.toLowerCase().includes(filterText.toLowerCase())
-        ) : [];
+        Object.values(campeones)
+            .filter(campeon =>
+                campeon.name.toLowerCase().includes(filterText.toLowerCase()) &&
+                !respuestasUsadas.includes(campeon.id)
+            ) : [];
 
     return (
         <div className="absolute w-full bg-white border border-gray-300 rounded-lg shadow-lg mt-15 z-10">
@@ -21,7 +23,7 @@ export default function ListaCampeones({ campeones, onSelect, filterText }) {
                 ))}
                 {campeonesFiltered.length === 0 && (
                     <li className="px-4 py-2 text-gray-500 italic">
-                        No se encontraron campeones
+                        {filterText ? 'No se encontraron campeones' : 'No hay más campeones disponibles'}
                     </li>
                 )}
             </ul>

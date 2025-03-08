@@ -9,6 +9,7 @@ export default function Aplicacion() {
   const [campAleatorio, setCampeonAleatorio] = useState(null);
   const [campeones, setCampeones] = useState(null);
   const [mostrarLista, setMostrarLista] = useState(false);
+  const [respuestasUsadas, setRespuestasUsadas] = useState([]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -17,8 +18,10 @@ export default function Aplicacion() {
   };
 
   const handleSelect = (campeon) => {
-    setInput(campeon.name);
+    setInput(''); // Dejamos el input vacío
     setMostrarLista(false);
+    setRespuestasUsadas([...respuestasUsadas, campeon.id]);
+    // Aquí puedes añadir la lógica para comprobar si el campeón seleccionado es el correcto
   };
 
   useEffect(() => {
@@ -73,6 +76,7 @@ export default function Aplicacion() {
               campeones={campeones}
               onSelect={handleSelect}
               filterText={input}
+              respuestasUsadas={respuestasUsadas}
             />
           )}
         </form>

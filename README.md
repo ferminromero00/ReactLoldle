@@ -49,17 +49,8 @@ Actualmente el proyecto está en desarrollo. Se está trabajando en:
 - Mejoras en la validación de respuestas.
 - Optimización de rendimiento.
 
-## 🛠 Contribuciones
-
-Si quieres colaborar en el desarrollo del proyecto, ¡eres bienvenido! Puedes hacer un fork del repositorio y enviar pull requests con mejoras.
-
-## 📜 Licencia
-
-Este proyecto se encuentra bajo la licencia **MIT**.
-
 ---
+🔗 **Desarrollado por Fermín Romero Trapero**
 
-🔗 **Desarrollado por [Tu Nombre]**
 
-Fermín Romero Trapero
 

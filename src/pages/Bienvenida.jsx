@@ -6,9 +6,7 @@ export default function Bienvenida() {
     const navigate = useNavigate(); // Usado para la navegación
 
     // Función para redirigir a la página principal
-    const ingresarApp = () => {
-        navigate('/home'); // Cambia '/home' por la ruta a la que deseas redirigir
-    };
+    const ingresarApp = () => {navigate('/home'); };
 
     return (
         <div className="w-full h-screen bg-[url('../assets/fondoBienvenida.jpg')] bg-cover bg-center z-10 flex justify-center items-center">

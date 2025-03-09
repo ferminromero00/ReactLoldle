@@ -57,7 +57,7 @@ export default function Aplicacion() {
   }, []);
 
   return (
-    <div className="min-h-screen flex flex-col items-center p-4">
+    <div className="min-h-screen flex flex-col items-center p-4 bg-[url('../assets/fondoBienvenida.jpg')] bg-cover bg-center bg-fixed">
       <div className="w-full max-w-md">
         {/* Logo */}
         <div className="mb-8 flex justify-center">
@@ -68,8 +68,8 @@ export default function Aplicacion() {
           />
         </div>
 
-        <div className='flex justify-center m-8'>
-          <p>Campeon a adivinar: {campAleatorio?.id}</p>
+        <div className='flex justify-center m-8 bg-black'>
+          <p className=''>Campeon a adivinar: {campAleatorio?.id}</p>
         </div>
 
         {/* Formulario */}
@@ -84,7 +84,7 @@ export default function Aplicacion() {
                 setMostrarLista(true);
               }}
               onClick={() => setMostrarLista(true)}
-              className="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500"
+              className="flex-1 px-4 py-2 border border-gray-300 bg-black rounded-lg focus:outline-none focus:border-blue-500"
               placeholder="¿En qué campeón piensas?"
             />
           </div>

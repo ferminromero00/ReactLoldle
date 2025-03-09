@@ -23,7 +23,7 @@ export default function ListaCampeones({ campeones, onSelect, filterText, respue
     if (!isVisible) return null;
 
     return (
-        <div className={`w-full bg-white border border-gray-300 rounded-lg shadow-lg mt-1 lista-container ${isHiding ? 'hide' : ''}`}>
+        <div className={`absolute w-full bg-white border border-gray-300 rounded-lg shadow-lg mt-1 lista-container ${isHiding ? 'hide' : ''}`}>
             <ul className="max-h-48 overflow-y-auto">
                 {campeonesFiltered.map((campeon) => (
                     <li

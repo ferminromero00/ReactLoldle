@@ -4,6 +4,7 @@ import Fetch from "../utils/fetch"
 import "./Aplicacion.css"
 import ListaCampeones from '../components/ListaCampeones';
 import CrearCard from '../components/CrearCard';
+import VictoriaModal from '../components/VictoriaModal';
 
 export default function Aplicacion() {
   const [input, setInput] = useState('');
@@ -11,7 +12,8 @@ export default function Aplicacion() {
   const [campeones, setCampeones] = useState(null);
   const [mostrarLista, setMostrarLista] = useState(false);
   const [respuestasUsadas, setRespuestasUsadas] = useState([]);
-  const [respuestasCards, setRespuestasCards] = useState([]); // Añade este estado
+  const [respuestasCards, setRespuestasCards] = useState([]); 
+  const [hasGanado, setHasGanado] = useState(false);
   const inputRef = useRef(null);
   const listRef = useRef(null);
 
@@ -25,8 +27,18 @@ export default function Aplicacion() {
     setInput(''); // Dejamos el input vacío
     setMostrarLista(false);
     setRespuestasUsadas([...respuestasUsadas, campeon.id]);
-    // Añadimos el nuevo campeón al principio del array
-    setRespuestasCards([campeon, ...respuestasCards]);
+    
+    // Añadimos el nuevo campeón al principio del array con un timestamp único
+    const campeonConTimestamp = {
+      ...campeon,
+      timestamp: Date.now() // Añadimos un timestamp para crear keys únicas
+    };
+    setRespuestasCards([campeonConTimestamp, ...respuestasCards]);
+    
+    // Comprobamos si ha acertado
+    if (campeon.id === campAleatorio.id) {
+        setHasGanado(true);
+    }
   };
 
   useEffect(() => {
@@ -103,14 +115,16 @@ export default function Aplicacion() {
       </div>
       {/* Lista de Cards con z-index menor */}
       <div className="mt-10 space-y-2 w-200 relative z-0">
-        {[...respuestasCards].map((campeon, index) => (
+        {respuestasCards.map((campeon, index) => (
           <CrearCard 
-            key={index} 
+            key={`${campeon.id}-${campeon.timestamp || index}`} 
             campeon={campeon} 
             index={index}
+            campeonObjetivo={campAleatorio}
           />
         ))}
       </div>
+      {hasGanado && <VictoriaModal campeon={campAleatorio} />}
     </div>
   );
 }

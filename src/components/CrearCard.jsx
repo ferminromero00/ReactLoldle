@@ -78,7 +78,7 @@ export default function CrearCard({ campeon, index, campeonObjetivo }) {
                                 }}
                             >
                                 {idx === 0 && <div style={spriteStyle}></div>}
-                                {idx === 1 && <div className="text-center">{campeon.genero}</div>}
+                                {idx === 1 && <div className="text-center ">{campeon.genero}</div>}
                                 {idx === 2 && <div className="text-center">{campeon.posicion}</div>}
                                 {idx === 3 && <div className="text-center">{campeon.raza}</div>}
                                 {idx === 4 && <div className="text-center">{campeon.partype}</div>}
